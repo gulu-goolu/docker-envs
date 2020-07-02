@@ -6,7 +6,7 @@ RUN gem install jekyll bundler
 
 ARG UID
 ARG GID
-RUN groupadd -g $GID dummy && useradd -r --uid $UID -g dummy dummy
+RUN groupadd -g $GID dummy && useradd -m -r --uid $UID -g dummy dummy
 USER dummy
 
 WORKDIR /data
