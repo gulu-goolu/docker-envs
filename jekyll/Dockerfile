@@ -11,5 +11,7 @@ RUN groupadd -g $GID dummy && useradd -m -r --uid $UID -g dummy dummy
 USER dummy
 
 # 更改工作目录
-WORKDIR /data
-VOLUME /data
+VOLUME ~/data
+WORKDIR ~/data
+
+CMD ["/bin/bash"]
