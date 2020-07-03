@@ -5,8 +5,8 @@ ARG UID
 ARG GID
 RUN groupadd -g $GID dummy && useradd -m -r --uid $UID -g dummy --groups "0" dummy
 
-# 设置工作目录
-RUN mkdir /data && chown -R dummy:dummy /data 
+# 创建 blog 目录
+RUN mkdir /blog && chown -R dummy:dummy /blog
 
 # 安装依赖
 RUN apt-get update && apt-get install -y ruby-full build-essential zlib1g-dev
@@ -16,4 +16,6 @@ ENV GEM_HOME="/home/dummy/gems"
 ENV PATH="$GEM_HOME/bin:$PATH"
 RUN gem install jekyll bundler
 
+# 设置工作目录
+WORKDIR /blog
 CMD ["/bin/bash"]
